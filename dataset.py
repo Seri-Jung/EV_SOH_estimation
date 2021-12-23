@@ -1,4 +1,4 @@
-import scipy.io
+import scipy.io  #  mat file read 
 
 def get_matData(dataName_and_set):
     mat_name = dataName_and_set[0]
