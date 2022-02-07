@@ -5,3 +5,5 @@
 
 - 데이터: NASA battery dataset(public) - [데이터셋에 대한 설명(영문)](https://github.com/Seri-Jung/EV_vsei/blob/main/readme.txt)
 - 삼성 네이처 논문: An Incremental Voltage Difference Basedd Technique for Online State of Health Estimation of Li-ion Batteries 
+
+
