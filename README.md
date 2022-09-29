@@ -1,4 +1,4 @@
-# 전기차 SOC 추청방법 구현해보기
+# 전기차 SO 추청방법 구현해보기
 
  - 삼성 네이처 논문 참고: [An Incremental Voltage Difference Basedd Technique for Online State of Health Estimation of Li-ion Batteries](https://www.nature.com/articles/s41598-020-66424-9.pdf)
  - 사용한 데이터: NASA battery dataset(public) - [데이터셋에 대한 설명(영문)](https://github.com/Seri-Jung/EV_vsei/blob/main/readme.txt)
