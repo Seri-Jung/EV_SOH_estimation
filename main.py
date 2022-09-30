@@ -4,6 +4,8 @@ from method import *
 from dataset import *
 from vsei_feature import get_vsei_feature
 import tensorflow as tf
+from sklearn.metrics import accuracy_score
+from numpy import argmax
 
 if __name__ =="__main__":
     train_data = {}
@@ -40,9 +42,7 @@ if __name__ =="__main__":
     trainX = trainX[s]
     trainY = trainY[s]
     '''
-    print(trainX.shape)
     trainX = np.expand_dims(trainX,axis=2)
-    print(trainX.shape)
     testX = np.expand_dims(testX,axis=2)
 
     model = neural_model()
@@ -52,6 +52,12 @@ if __name__ =="__main__":
     predict_result = model.predict(testX)
     #loss, mae, mse = model.evaluate(testX, testY)
     testCycles = np.array(testCycles)
+
+    Xpred = predict_result.argmax(axis=-1)
+    Ytest= testY.argmax(axis=-1)
+
+    # 정확도
+    print("정확도: ", accuracy_score(Xpred, Ytest))
 
     plt.figure()
     plt.plot(testCycles,testY, label = "original")
