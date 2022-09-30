@@ -40,8 +40,10 @@ if __name__ =="__main__":
     trainX = trainX[s]
     trainY = trainY[s]
     '''
-    trainX = np.expand_dims(trainX,axis=3)
-    testX = np.expand_dims(testX,axis=3)
+    print(trainX.shape)
+    trainX = np.expand_dims(trainX,axis=2)
+    print(trainX.shape)
+    testX = np.expand_dims(testX,axis=2)
 
     model = neural_model()
     

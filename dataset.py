@@ -10,8 +10,9 @@ def get_matData(dataName_and_set):
         train_data['charge'] = []
         train_data['discharge'] = []
 
+        path = './dataset'
         file_name = mat_name + ".mat"
-        mat_datas = scipy.io.loadmat(file_name)
+        mat_datas = scipy.io.loadmat(path + '/' + file_name)
         mat_datas = mat_datas[mat_name]['cycle'][0][0][0]
 
         charge_data = []
