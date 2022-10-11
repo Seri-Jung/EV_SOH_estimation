@@ -1,5 +1,5 @@
 from keras.models import Sequential
-from keras.layers import Dense,Input, Conv1D, LeakyReLU, Flatten, MaxPooling1D
+from keras.layers import Dense,Input, Conv1D, LeakyReLU, Flatten, MaxPooling1D, LSTM
 from keras import optimizers
 
 
@@ -10,14 +10,13 @@ min_soc = 0.2
 max_soc = 0.6
 
 soc_margin = 0.030 # soc 간격이 1.5%가 아니라 더 높게해야 잘나옴
-
-model_pick = 'cnn'
 input_size = 10
 
 epochs = 500
 batch_size = 4
 
-def neural_model():
+def neural_model(model_pick):
+
     model = Sequential()
 
     if model_pick == "cnn":
@@ -30,9 +29,9 @@ def neural_model():
         model.add(Flatten())
         model.add(Dense(100))
         model.add(Dense(1))
-    elif model_pick == "ann":
-        model.add(Flatten())
-        model.add(Dense(100))
+    elif model_pick == "LSTM":
+        model.add(LSTM(10, activation = 'relu', input_shape=(input_size,1)))
+        model.add(Dense(5))  # DENSE와 사용법 동일하나 input_shape=(열, 몇개씩잘라작업)
         model.add(Dense(1))
 
     optimizer = optimizers.Adam()
