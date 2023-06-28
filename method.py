@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 from config import min_soc, max_soc, soc_margin
 
-def get_capacity(batt_data, discharging = False):
+def get_capacity(batt_data, discharging = False):  # 배터리 용량 계산
     capacity = 0
     for i,t in zip(batt_data['Current_measured'],batt_data['Time']):
         capacity += i*t
@@ -12,7 +12,7 @@ def get_capacity(batt_data, discharging = False):
     else:
         return capacity
 
-def get_Rf(volt_curr_data, init_data = True):
+def get_Rf(volt_curr_data, init_data = True):  # 배터리의 고정 내부 저항 - 노화에도 변경되지 않는 값/ 첫번째 사이클의 경우 Ri = Rf
     if init_data:
         tv = 0
         ti = 0
@@ -39,7 +39,7 @@ def get_SOC(batt_data,capacity):
         soc.append(now_soc)
     return soc
 
-def get_Vsei(data, r):
+def get_Vsei(data, r):  # V_sei 구하기: data=data['charge'][i][0], r=rf
     data['Voltage_measured'] = np.array(data['Voltage_measured'])
     # nan 값 수정
     nan_idx = np.argwhere(pd.isnull(data['Voltage_measured']))
@@ -50,6 +50,8 @@ def get_Vsei(data, r):
 
     cap = get_capacity(data)
     soc = get_SOC(data,cap)
+
+    print("cap: ", cap)
 
     volt_threshold = np.mean(data['Voltage_measured']) * 0.95 # 미정 // Vsei를 시작할 부분
     init_threshold = np.where(data['Voltage_measured'] > volt_threshold)[0]
