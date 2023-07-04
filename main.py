@@ -45,34 +45,34 @@ if __name__ =="__main__":
     '''
     
     trainX, trainY = get_vsei_feature(train_data,trainset)
-    # # testX, testY, testCycles = get_vsei_feature(test_data,testset, is_testset= True)
+    testX, testY, testCycles = get_vsei_feature(test_data,testset, is_testset= True)
 
-    # trainX = np.array(trainX)
-    # trainY = np.array(trainY)
-    # # testX = np.array(testX); testY = np.array(testY)
+    trainX = np.array(trainX)
+    trainY = np.array(trainY)
+    testX = np.array(testX); testY = np.array(testY)
     
-    # trainX = np.expand_dims(trainX,axis=2)
-    # # testX = np.expand_dims(testX,axis=2)
+    trainX = np.expand_dims(trainX,axis=2)
+    testX = np.expand_dims(testX,axis=2)
 
     # print(trainX)
-    # print('\ntrainX shape:', trainX.shape)
+    print('\ntrainX shape:', trainX.shape)
 
-    # print("\n---\n")
+    print("\n---\n")
     # print(trainY)
-    # print('\ntrainX shape:', trainY.shape)
+    print('\ntrainX shape:', trainY.shape)
 
-    # # 모델 CNN
-    # print("CNN\n")
-    # model1 = neural_model("cnn")
+    # 모델 CNN
+    print("CNN\n")
+    model1 = neural_model("cnn")
 
-    # history1 = model1.fit(trainX,trainY, epochs=epochs, batch_size= batch_size, validation_data = (testX,testY))
+    history1 = model1.fit(trainX,trainY, epochs=epochs, batch_size= batch_size, validation_data = (testX,testY))
 
-    # predict_result1 = model1.predict(testX)
-    # #loss, mae, mse = model.evaluate(testX, testY)
-    # testCycles = np.array(testCycles)
+    predict_result1 = model1.predict(testX)
+    #loss, mae, mse = model.evaluate(testX, testY)
+    testCycles = np.array(testCycles)
 
-    # Xpred1 = predict_result1.argmax(axis=-1)
-    # Ytest= testY.argmax(axis=-1)
+    Xpred1 = predict_result1.argmax(axis=-1)
+    Ytest= testY.argmax(axis=-1)
 
     # # 모델 LSTM
     # print("LSTM\n")
